@@ -55,7 +55,7 @@ router.post("/", async (req, res) => {
   });
   try {
     const respuesta = await newArticle.save();
-    res.json({ mensaje: "Articulo agregado con exito! ", article: respuesta });
+    res.json({ mensaje: "Articulo agregado con exito! ", articles: respuesta });
   } catch (error) {
     res.status(500).json({ mensaje: "Error: ", tipo: error });
   }

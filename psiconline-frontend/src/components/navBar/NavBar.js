@@ -5,7 +5,7 @@ import Turnos from "../turnos/Turnos";
 import Blog from "../blog/Blog";
 import SignIn from "../signIn/SignIn";
 import Home from "../home/Home";
-import logo from "../../img/4.png";
+import logo from "../../img/logo9.3.png";
 import "../navBar/navBar.css";
 import { Navbar, Form, Button, Nav, NavDropdown } from "react-bootstrap";
 
@@ -21,13 +21,13 @@ function NavBar() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        className="navbar fixed-top"
+        className="navbar fixed-top align-items-center"
         id="menu"
       >
         <div className="logo">
           <Navbar.Brand>
             <Link to="/">
-              <img src={logo} style={{ width: 100, marginTop: -7 }} />
+              <img src={logo} style={{ width: 120, marginTop: -7 , marginLeft: 20}} />
             </Link>
           </Navbar.Brand>
         </div>
@@ -36,36 +36,37 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
               <Nav.Link>
-                <Link to="/about">Sobre mí</Link>
+                <Link to="/about" className="link">Sobre mí</Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/blog">Blog</Link>
+                <Link to="/blog" className="link">Blog</Link>
               </Nav.Link>
               <NavDropdown
                 title="Trabajemos juntxs"
                 id="collasible-nav-dropdown"
+                className="link-down"
               >
                 <NavDropdown.Item>
-                  <Link to="/turnos">Terapia online</Link>
+                  <Link to="/turnos" className="link-down">Terapia online</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/talleres">Talleres</Link>
+                  <Link to="/talleres"className="link-down">Talleres</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/eventos">Eventos</Link>
+                  <Link to="/eventos" className="link-down">Eventos</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link>
-                <Link to="/signIn">Sign In</Link>
+                <Link to="/signIn" className="link">Sign In</Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/createArticle">Crear un articulo</Link>
+                <Link to="/createArticle" className="link">Crear un articulo</Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </div>
       </Navbar>
-      <div className="espacio" style={{ height: 119 }}></div>
+      <div className="espacio" style={{ height: 115 }}></div>
     </>
   );
 }

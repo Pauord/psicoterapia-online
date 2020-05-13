@@ -102,7 +102,7 @@ const CreateArticle = () => {
             </Button>
           )}
           <p>{respuestaMensaje}</p>
-          {respuestaMensaje && <Link to="/">Volver</Link>}
+          {respuestaMensaje && <Link to="/blog">Volver</Link>}
         </Form>
       </div>
     </>
