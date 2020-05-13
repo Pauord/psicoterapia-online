@@ -17,6 +17,8 @@ import SignIn from "./components/signIn/SignIn";
 import About from "./components/aboutMe/About";
 import Talleres from "./components/talleres/Talleres";
 import Eventos from "./components/eventos/Eventos";
+import LoginAdm from "./components/loginAdm/LogInAdm";
+import CreateArticle from "./components/createArticle/CreateArticle";
 
 function App() {
 
@@ -41,8 +43,14 @@ function App() {
           <Route path="/eventos">
             <Eventos />
             </Route>
-          <Route path="/session">
+          <Route path="/signIn">
             <SignIn />
+            </Route>
+          <Route path="/loginAdm">
+            <LoginAdm />
+          </Route>
+          <Route path="/createArticle">
+            <CreateArticle/>
           </Route>
           <Route path="/">
             <Home />
