@@ -21,7 +21,7 @@ const ArticleModel = mongoose.model("blogArticles", blogArticleSchema); //'bloga
 router.get("/", async (req, res) => {
   //devuelve listado completo
   try {
-    const respuesta = await ArticleModel.find(); //al no pasarle parametros al find, me devuelve todo lo que esta despues de la "/"
+    const respuesta = await ArticleModel.find().sort({createdAt:"desc"}); //al no pasarle parametros al find, me devuelve todo lo que esta despues de la "/"
     res.json({
       mensaje: "listado de articulos: ",
       respuesta,
@@ -85,11 +85,12 @@ router.put("/:idArticle", async (req, res) => {
 
 router.delete("/:idArticle", async (req, res) => {
   try {
-    id = req.params.idArticle;
-    const respuesta = await ArticleModel.findByIdAndRemove(id);
+   const id = req.params.idArticle;
+    await ArticleModel.findByIdAndRemove(id);
+    const articles = await ArticleModel.find().sort({createdAt:"desc"}); 
     res.json({
-      mensaje: "Turno borrado con exito: ",
-      respuesta,
+      mensaje: "Articulo borrado con exito",
+      articles,
     });
   } catch (error) {
     res.status(500).json({ mensaje: "Error: ", tipo: error });

@@ -2,6 +2,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import portada from "../../img/portada2.jpg";
+import "../Slides/slides.css"
 
 function Slides() {
   return (

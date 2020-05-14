@@ -2,11 +2,11 @@
 import React from "react";
 import { Jumbotron, Button } from "react-bootstrap";
 import fondo from "../../img/escritorio.jpg";
-
+import "../section/section.css";
 function Section() {
   return (
     <div>
-      <Jumbotron className="jumbotron"> 
+      <Jumbotron className="jumbotron" style={{ marginBottom: 0 }}> 
         <h1>Bienvenidx!</h1>
         <p>
           Quiero darte la bienvenida y contarte que me pone muy contenta que

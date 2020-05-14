@@ -19,6 +19,7 @@ import Talleres from "./components/talleres/Talleres";
 import Eventos from "./components/eventos/Eventos";
 import LoginAdm from "./components/loginAdm/LogInAdm";
 import CreateArticle from "./components/createArticle/CreateArticle";
+import EditArticle from "./components/EditArticle/EditArticle";
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
 
   return (
     <>
-      <Router>
+      
         <Switch>
           <Route path="/about">
             <About />
@@ -52,11 +53,14 @@ function App() {
           <Route path="/createArticle">
             <CreateArticle/>
           </Route>
+          <Route path="/edit/:idArticle">
+            <EditArticle/>
+          </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
-      </Router>
+      
     </>
   );
 }

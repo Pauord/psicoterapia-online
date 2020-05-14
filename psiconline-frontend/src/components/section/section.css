@@ -3,8 +3,9 @@
 }
 .mainSection {
   max-height: 100vh;
+  max-width: 100vw;
 }
 
-.jumbotron {
-  margin-bottom: 0;
+Button {
+  background-color: #0c4160, !important;
 }

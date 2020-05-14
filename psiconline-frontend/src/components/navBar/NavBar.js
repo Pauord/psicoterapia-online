@@ -27,7 +27,10 @@ function NavBar() {
         <div className="logo">
           <Navbar.Brand>
             <Link to="/">
-              <img src={logo} style={{ width: 120, marginTop: -7 , marginLeft: 20}} />
+              <img
+                src={logo}
+                style={{ width: 90, marginTop: -7, marginLeft: 20 }}
+              />
             </Link>
           </Navbar.Brand>
         </div>
@@ -36,10 +39,14 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
               <Nav.Link>
-                <Link to="/about" className="link">Sobre mí</Link>
+                <Link to="/about" className="link">
+                  Sobre mí
+                </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/blog" className="link">Blog</Link>
+                <Link to="/blog" className="link">
+                  Blog
+                </Link>
               </Nav.Link>
               <NavDropdown
                 title="Trabajemos juntxs"
@@ -47,26 +54,36 @@ function NavBar() {
                 className="link-down"
               >
                 <NavDropdown.Item>
-                  <Link to="/turnos" className="link-down">Terapia online</Link>
+                  <Link to="/turnos" className="link-down">
+                    Terapia online
+                  </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/talleres"className="link-down">Talleres</Link>
+                  <Link to="/talleres" className="link-down">
+                    Talleres
+                  </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/eventos" className="link-down">Eventos</Link>
+                  <Link to="/eventos" className="link-down">
+                    Eventos
+                  </Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link>
-                <Link to="/signIn" className="link">Sign In</Link>
+                <Link to="/signIn" className="link">
+                  Sign In
+                </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/createArticle" className="link">Crear un articulo</Link>
+                <Link to="/createArticle" className="link">
+                  Crear un articulo
+                </Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </div>
       </Navbar>
-      <div className="espacio" style={{ height: 115 }}></div>
+      <div className="espacio" style={{ height: 90 }}></div>
     </>
   );
 }

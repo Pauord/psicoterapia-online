@@ -1,17 +1,39 @@
 //@ts-check
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import "../createArticle/createArticle.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NavBar from "../navBar/NavBar";
 
-const CreateArticle = () => {
+const EditArticle = (handleEdit) => {
+  const { idArticle } = useParams();
   const [titulo, setTitulo] = useState("");
   const [categoria, setCategoria] = useState("");
   const [texto, setTexto] = useState("");
   const [loading, setLoading] = useState(false);
   const [respuestaMensaje, setRespuestaMensaje] = useState("");
+
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:3000/blog/${idArticle}`);
+       const {titulo, categoria, texto} = response.data.respuesta;
+       setTitulo(titulo);
+       setCategoria(categoria);
+       setTexto(texto);
+
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArticle();
+  }, []);
+
 
   const handleSubmit = async (event) => {
     try {
@@ -22,14 +44,14 @@ const CreateArticle = () => {
         categoria,
         texto,
       };
-      const respuesta = await axios.post(
-        "http://localhost:3000/blog/",
+      const respuesta = await axios.put(
+        `http://localhost:3000/blog/${idArticle}`,
         payload
       );
       setRespuestaMensaje(respuesta.data.mensaje);
       console.log(respuesta.data);
 
-      // onCreateArticle({ titulo, categoria, texto });
+      // onEditArticle({ titulo, categoria, texto });
     } catch (error) {
       console.log(error);
     } finally {
@@ -42,6 +64,7 @@ const CreateArticle = () => {
   const clearForm = (event) => {
     setTitulo("");
     setCategoria("");
+    // setFecha("");
     setTexto("");
   };
 
@@ -108,4 +131,5 @@ const CreateArticle = () => {
   );
 };
 
-export default CreateArticle;
+export default EditArticle;
+
