@@ -20,10 +20,9 @@ import Eventos from "./components/eventos/Eventos";
 import LoginAdm from "./components/loginAdm/LogInAdm";
 import CreateArticle from "./components/createArticle/CreateArticle";
 import EditArticle from "./components/EditArticle/EditArticle";
+import SignUp from "./components/signUp/SignUp";
 
 function App() {
-
-  
 
   return (
     <>
@@ -49,6 +48,9 @@ function App() {
             </Route>
           <Route path="/loginAdm">
             <LoginAdm />
+          </Route>
+          <Route path="/signUp">
+            <SignUp />
           </Route>
           <Route path="/createArticle">
             <CreateArticle/>

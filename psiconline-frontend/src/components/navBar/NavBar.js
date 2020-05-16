@@ -4,6 +4,7 @@ import { Link, Switch, Route, useHistory } from "react-router-dom";
 import Turnos from "../turnos/Turnos";
 import Blog from "../blog/Blog";
 import SignIn from "../signIn/SignIn";
+import SigUp from "../signUp/SignUp";
 import Home from "../home/Home";
 import logo from "../../img/logo9.3.png";
 import "../navBar/navBar.css";
@@ -71,7 +72,12 @@ function NavBar() {
               </NavDropdown>
               <Nav.Link>
                 <Link to="/signIn" className="link">
-                  Sign In
+                 Ingresá
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/signUp" className="link">
+                  Registrate
                 </Link>
               </Nav.Link>
               <Nav.Link>

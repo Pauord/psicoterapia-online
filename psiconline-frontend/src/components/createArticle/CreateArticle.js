@@ -29,7 +29,7 @@ const CreateArticle = () => {
       setRespuestaMensaje(respuesta.data.mensaje);
       console.log(respuesta.data);
 
-      // onCreateArticle({ titulo, categoria, texto });
+ 
     } catch (error) {
       console.log(error);
     } finally {
