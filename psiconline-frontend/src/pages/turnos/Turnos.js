@@ -1,17 +1,16 @@
 //@ts-check
 import React from 'react';
-import NavBar from '../navBar/NavBar';
+import NavBar from '../../components/navBar/NavBar';
 
-function About() {
+function Turnos() {
     return (
         <>
         <NavBar />
         <div>
-            <p>Sobre mi
-            </p>
+            <p>Turnos</p>
         </div>
         </>
     );
 }
 
-export default About;
+export default Turnos;

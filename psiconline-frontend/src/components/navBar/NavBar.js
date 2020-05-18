@@ -1,11 +1,6 @@
 //@ts-check
 import React from "react";
-import { Link, Switch, Route, useHistory } from "react-router-dom";
-import Turnos from "../turnos/Turnos";
-import Blog from "../blog/Blog";
-import SignIn from "../signIn/SignIn";
-import SigUp from "../signUp/SignUp";
-import Home from "../home/Home";
+import { Link } from "react-router-dom";
 import logo from "../../img/logo9.3.png";
 import "../navBar/navBar.css";
 import { Navbar, Form, Button, Nav, NavDropdown } from "react-bootstrap";

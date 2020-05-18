@@ -1,7 +1,7 @@
 //@ts-check
 import React from "react";
-import NavBar from "../navBar/NavBar";
-import "../signIn/signIn.css";
+import NavBar from "../../components/navBar/NavBar";
+import "./signIn.css";
 import { Link } from "react-router-dom";
 
 function SignIn() {

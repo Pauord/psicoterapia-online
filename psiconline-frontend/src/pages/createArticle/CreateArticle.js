@@ -1,39 +1,17 @@
 //@ts-check
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import "../createArticle/createArticle.css";
+import "./createArticle.css";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import NavBar from "../navBar/NavBar";
+import { Link } from "react-router-dom";
+import NavBar from "../../components/navBar/NavBar";
 
-const EditArticle = (handleEdit) => {
-  const { idArticle } = useParams();
+const CreateArticle = () => {
   const [titulo, setTitulo] = useState("");
   const [categoria, setCategoria] = useState("");
   const [texto, setTexto] = useState("");
   const [loading, setLoading] = useState(false);
   const [respuestaMensaje, setRespuestaMensaje] = useState("");
-
-
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`http://localhost:3000/blog/${idArticle}`);
-       const {titulo, categoria, texto} = response.data.respuesta;
-       setTitulo(titulo);
-       setCategoria(categoria);
-       setTexto(texto);
-
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchArticle();
-  }, []);
-
 
   const handleSubmit = async (event) => {
     try {
@@ -44,14 +22,14 @@ const EditArticle = (handleEdit) => {
         categoria,
         texto,
       };
-      const respuesta = await axios.put(
-        `http://localhost:3000/blog/${idArticle}`,
+      const respuesta = await axios.post(
+        "http://localhost:3000/blog/",
         payload
       );
       setRespuestaMensaje(respuesta.data.mensaje);
       console.log(respuesta.data);
 
-      // onEditArticle({ titulo, categoria, texto });
+ 
     } catch (error) {
       console.log(error);
     } finally {
@@ -64,7 +42,6 @@ const EditArticle = (handleEdit) => {
   const clearForm = (event) => {
     setTitulo("");
     setCategoria("");
-    // setFecha("");
     setTexto("");
   };
 
@@ -131,5 +108,4 @@ const EditArticle = (handleEdit) => {
   );
 };
 
-export default EditArticle;
-
+export default CreateArticle;

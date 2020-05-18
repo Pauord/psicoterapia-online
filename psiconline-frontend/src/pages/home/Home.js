@@ -2,9 +2,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 // import portada from "../img/portada.jpg";
-import Carousel from "../Slides/Slidesl";
-import NavBar from "../navBar/NavBar";
-import Section from "../section/Section";
+import Carousel from "../../components/Slides/Slides";
+import NavBar from "../../components/navBar/NavBar";
+import Section from "../../components/section/Section";
 
 function Home() {
   return (

@@ -1,16 +1,16 @@
 //@ts-check
 import React from 'react';
-import NavBar from '../navBar/NavBar';
+import NavBar from '../../components/navBar/NavBar';
 
-function Talleres() {
+function Eventos() {
     return (
         <>
         <NavBar />
         <div>
-            <p>Talleres</p>
+            <p>Eventos</p>
         </div>
         </>
     );
 }
 
-export default Talleres;
+export default Eventos;

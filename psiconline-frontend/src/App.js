@@ -1,8 +1,18 @@
 //@ts-check
 import React from "react";
 import "./App.css";
-import Navbar from "./components/navBar/NavBar";
-import Home from "./components/home/Home";
+import Home from "./pages/home/Home";
+import Turnos from "./pages/turnos/Turnos";
+import Blog from "./pages/blog/Blog";
+import SignIn from "./pages/signIn/SignIn";
+// import logo from "./img/1.png";
+import About from "./pages/aboutMe/About";
+import Talleres from "./pages/talleres/Talleres";
+import Eventos from "./pages/eventos/Eventos";
+import LoginAdm from "./pages/loginAdm/LogInAdm";
+import CreateArticle from "./pages/createArticle/CreateArticle";
+import EditArticle from "./pages/EditArticle/EditArticle";
+import SignUp from "./pages/signUp/SignUp";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,17 +20,6 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
-import Turnos from "./components/turnos/Turnos";
-import Blog from "./components/blog/Blog";
-import SignIn from "./components/signIn/SignIn";
-// import logo from "./img/1.png";
-import About from "./components/aboutMe/About";
-import Talleres from "./components/talleres/Talleres";
-import Eventos from "./components/eventos/Eventos";
-import LoginAdm from "./components/loginAdm/LogInAdm";
-import CreateArticle from "./components/createArticle/CreateArticle";
-import EditArticle from "./components/EditArticle/EditArticle";
-import SignUp from "./components/signUp/SignUp";
 
 function App() {
 

@@ -1,6 +1,6 @@
 //@ts-check
 import React from "react";
-import NavBar from "../navBar/NavBar";
+import NavBar from "../../components/navBar/NavBar";
 import "../signUp/signUp.css";
 
 

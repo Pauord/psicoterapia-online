@@ -1,9 +1,10 @@
 //@ts-check
 import React, { useEffect, useState } from "react";
-import NavBar from "../navBar/NavBar";
+import NavBar from "../../components/navBar/NavBar";
 import { Nav, Card, Button } from "react-bootstrap";
 import { Link, useHistory, useParams } from "react-router-dom";
 import axios from "axios";
+import "../blog/blog.css";
 
 function Blog() {
   const { idArticle } = useParams();
@@ -53,10 +54,10 @@ function Blog() {
       {loading ? (
         <span>Cargando....</span>
       ) : (
-        <ul>
+        <ul className="container-fluid">
           {articles.map((article) => (
             <li key={article._id}>
-              <Card style={{ width: "18rem", margin: 20 }}>
+              <Card className="card">
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                   <Card.Title>{article.titulo}</Card.Title>

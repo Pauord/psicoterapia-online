@@ -1,7 +1,7 @@
 //@ts-check
 import React from "react";
-import "../loginAdm/loginAdm.css";
-import NavBar from '../navBar/NavBar';
+import "./loginAdm.css";
+import NavBar from '../../components/navBar/NavBar';
 
 function LoginAdm() {
   return (
