@@ -1,0 +1,4 @@
+.portada img {
+  background: url("/psiconline-frontend/src/img/portada.jpg") no-repeat center center fixed;
+ background-size: cover;
+}

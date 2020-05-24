@@ -1,78 +1,175 @@
 //@ts-check
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import "../signUp/signUp.css";
-
+import axios from "axios";
+import { Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function SignUp() {
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [fechaNacimiento, setFechaNacimiento] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [newsletter, setNewsletter] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [respuestaMensaje, setRespuestaMensaje] = useState("");
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      setLoading(true);
+      const payload = {
+        nombre,
+        apellido,
+        fechaNacimiento,
+        sexo,
+        email,
+        password,
+        newsletter,
+      };
+      const respuesta = await axios.post(
+        "http://localhost:3000/users/",
+        payload
+      );
+      setRespuestaMensaje(respuesta.data.mensaje);
+      console.log(respuesta.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+
+    clearForm();
+  };
+
+  const clearForm = (event) => {
+    setNombre("");
+    setApellido("");
+    setFechaNacimiento("");
+    setSexo("");
+    setEmail("");
+    setPassword("");
+    
+
+  };
+
   return (
     <>
       <NavBar />
 
-      <div>
-        <form className="login">
+      
+        <Form className="form" onSubmit={handleSubmit}>
           <h3>Registrate</h3>
 
-          <div className="form-group">
-            <label>Nombre</label>
-            <input
+          <Form.Group>
+            <Form.Label>Nombre</Form.Label>
+            <Form.Control
               type="text"
+              placeholder="Nombre"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
               className="form-control"
-              placeholder="ingrese su nombre"
+              id="nombre"
+              aria-describedby="ingrese nombre"
+              required
             />
-          </div>
-          <div className="form-group">
-            <label>Apellido</label>
-            <input
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Apellido</Form.Label>
+            <Form.Control
               type="text"
+              placeholder="Apellido"
+              value={apellido}
+              onChange={(e) => setApellido(e.target.value)}
               className="form-control"
-              placeholder="ingrese su apellido"
+              id="apellido"
+              aria-describedby="ingrese apellido"
+              required
             />
-          </div>
-          <div className="form-group">
-            <label>Fecha de nacimiento</label>
-            <input
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>fecha de Nacimiento</Form.Label>
+            <Form.Control
               type="date"
+              placeholder="fecha de nacimiento"
+              value={fechaNacimiento}
+              onChange={(e) => setFechaNacimiento(e.target.value)}
               className="form-control"
-              placeholder="ingrese su fecha de nacimiento"
+              id="fechaNacimiento"
+              aria-describedby="ingrese fecha de nacimiento"
+              required
             />
-          </div>
-          <div className="form-group">
-            <label>Usuario</label>
-            <input
-              type="text"
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Sexo</Form.Label>
+            <Form.Control
+              as="select"
+              value={sexo}
+              onChange={(e) => setSexo(e.target.value)}
               className="form-control"
-              placeholder="ingrese un nombre de usuario"
+              id="sexo"
+              aria-describedby="ingrese sexo"
+              required
+            >
+              <option selected>Mujer</option>
+              <option>Hombre</option>
+              <option>Otro</option>
+              <option>No deseo reponder</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="algo@algo.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="form-control"
+              id="email"
+              aria-describedby="ingrese email"
+              required
             />
-          </div>
-
-          <div className="form-group">
-            <label>Contraseña</label>
-            <input
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Contraseña</Form.Label>
+            <Form.Control
               type="password"
+              placeholder="ingrese una contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="form-control"
-              placeholder="Ingrese password"
+              id="password"
+              aria-describedby="ingrese password"
+              required
             />
-          </div>
+          </Form.Group>
 
-          <div className="form-group">
-            <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="custom-control-input"
-                id="customCheck1"
-              />
-              <label className="custom-control-label" htmlFor="customCheck1">
-               Deseo recibir newsletters
-              </label>
-            </div>
-          </div>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check
+              type="checkbox"
+              name="newsLetter"
+              label="Deseo recibir Newsletter"
+              checked={newsletter}
+              onChange={(e) => setNewsletter(e.target.checked)}
+              
+            /> 
+            
+          </Form.Group>
 
-          <button type="submit" className="btn btn-primary btn-block">
-            Submit
-          </button>
-        </form>
-      </div>
+          {loading ? (
+            <span>Cargando...</span>
+          ) : (
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
+              Registrarme{" "}
+            </Button>
+          )}
+          <p>{respuestaMensaje}</p>
+          {respuestaMensaje && <Link to="/">Volver</Link>}
+        </Form>
+      
     </>
   );
 }

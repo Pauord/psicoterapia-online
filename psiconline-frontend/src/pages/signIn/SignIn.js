@@ -9,52 +9,47 @@ function SignIn() {
     <>
       <NavBar />
 
-      <div>
-        <form className="login">
-          <h3>Sign In</h3>
+      <form className="border border-light p-5"/>
 
-          <div className="form-group">
-            <label>Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Enter email"
-            />
-          </div>
+    <p className="h4 mb-4 text-center">Sign in</p>
 
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-            />
-          </div>
+    <input type="email" id="defaultLoginFormEmail" className="form-control mb-4" placeholder="E-mail"/>
 
-          <div className="form-group">
+    <input type="password" id="defaultLoginFormPassword" className="form-control mb-4" placeholder="Password"/>
+
+    <div className="d-flex justify-content-between">
+        <div>
             <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="custom-control-input"
-                id="customCheck1"
-              />
-              <label className="custom-control-label" htmlFor="customCheck1">
-                Remember me
-              </label>
+                <input type="checkbox" className="custom-control-input" id="defaultLoginFormRemember"/>
+                <label className="custom-control-label">Remember me</label>
             </div>
-          </div>
+        </div>
+        <div>
+            <a href="">Forgot password?</a>
+        </div>
+    </div>
 
-          <button type="submit" className="btn btn-primary btn-block">
-            Submit
-          </button>
-          <p className="forgot-password text-right">
-            Forgot <a href="#">password?</a>
-          </p>
-          <p className="forgot-password text-right">
-            <Link to="/loginAdm">Ingresa como administrador</Link>
-          </p>
-        </form>
-      </div>
+    <button className="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+    <div className="text-center">
+        <p>Not a member?
+            <a href="">Register</a>
+        </p>
+
+        <p>or sign in with:</p>
+        <a type="button" className="light-blue-text mx-2">
+            <i className="fab fa-facebook-f"></i>
+        </a>
+        <a type="button" className="light-blue-text mx-2">
+            <i className="fab fa-twitter"></i>
+        </a>
+        <a type="button" className="light-blue-text mx-2">
+            <i className="fab fa-linkedin-in"></i>
+        </a>
+        <a type="button" className="light-blue-text mx-2">
+            <i className="fab fa-github"></i>
+        </a>
+    </div>
     </>
   );
 }

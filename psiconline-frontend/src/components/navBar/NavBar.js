@@ -31,9 +31,14 @@ function NavBar() {
           </Navbar.Brand>
         </div>
         <div className="barra-menu">
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toggle" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
+            <Nav.Link>
+                <Link to="/" className="link">
+                 Home
+                </Link>
+              </Nav.Link>
               <Nav.Link>
                 <Link to="/about" className="link">
                   Sobre mí
@@ -47,7 +52,7 @@ function NavBar() {
               <NavDropdown
                 title="Trabajemos juntxs"
                 id="collasible-nav-dropdown"
-                className="link-down"
+                className="link-dropdown"
               >
                 <NavDropdown.Item>
                   <Link to="/turnos" className="link-down">
@@ -67,7 +72,7 @@ function NavBar() {
               </NavDropdown>
               <Nav.Link>
                 <Link to="/signIn" className="link">
-                 Ingresá
+                  Ingresá
                 </Link>
               </Nav.Link>
               <Nav.Link>
@@ -76,8 +81,8 @@ function NavBar() {
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/createArticle" className="link">
-                  Crear un articulo
+                <Link to="/adm" className="link">
+                  Administrar
                 </Link>
               </Nav.Link>
             </Nav>

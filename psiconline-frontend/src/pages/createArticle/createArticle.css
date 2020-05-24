@@ -5,21 +5,34 @@ html {
   font-size: 16px;
   position: relative;
 }
-.form {
-  width: 600px;
-  border: 1px solid #e1e1e1;
-  border-radius: 4px;
-  background-color: honeydew;
-  padding: 15px;
-  position: absolute;
-  margin-top: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+.body-form-article {
+  
+    width: 500px;
+    border: 1px solid #ffd900;
+    border-radius: 4px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 120px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+  }
+  @media (max-width: 400px) {
+    .form-createArticle {
+      width: 90%;
+    }
+  }
+
 
 @media (max-width: 400px) {
   .form {
     width: 90%;
   }
+}
+
+.container-image {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }

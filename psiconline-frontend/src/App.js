@@ -5,11 +5,9 @@ import Home from "./pages/home/Home";
 import Turnos from "./pages/turnos/Turnos";
 import Blog from "./pages/blog/Blog";
 import SignIn from "./pages/signIn/SignIn";
-// import logo from "./img/1.png";
 import About from "./pages/aboutMe/About";
 import Talleres from "./pages/talleres/Talleres";
 import Eventos from "./pages/eventos/Eventos";
-import LoginAdm from "./pages/loginAdm/LogInAdm";
 import CreateArticle from "./pages/createArticle/CreateArticle";
 import EditArticle from "./pages/EditArticle/EditArticle";
 import SignUp from "./pages/signUp/SignUp";
@@ -17,9 +15,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useHistory,
 } from "react-router-dom";
+import Adm from "./pages/adm/Adm";
 
 function App() {
 
@@ -45,9 +42,6 @@ function App() {
           <Route path="/signIn">
             <SignIn />
             </Route>
-          <Route path="/loginAdm">
-            <LoginAdm />
-          </Route>
           <Route path="/signUp">
             <SignUp />
           </Route>
@@ -56,6 +50,9 @@ function App() {
           </Route>
           <Route path="/edit/:idArticle">
             <EditArticle/>
+          </Route>
+          <Route path="/adm">
+            <Adm/>
           </Route>
           <Route path="/">
             <Home />
