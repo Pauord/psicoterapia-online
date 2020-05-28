@@ -8,8 +8,8 @@ function SignIn() {
   return (
     <>
       <NavBar />
-
-      <form className="border border-light p-5"/>
+<div className="body-signIn">
+      <form className="border border-light p-5 "/>
 
     <p className="h4 mb-4 text-center">Sign in</p>
 
@@ -49,6 +49,7 @@ function SignIn() {
         <a type="button" className="light-blue-text mx-2">
             <i className="fab fa-github"></i>
         </a>
+    </div>
     </div>
     </>
   );

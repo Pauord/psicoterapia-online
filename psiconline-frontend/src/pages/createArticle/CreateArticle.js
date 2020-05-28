@@ -16,6 +16,7 @@ const CreateArticle = (nochangeEditor) => {
   const [fechaPost, setFechaPost] = useState("");
   const [loading, setLoading] = useState(false);
   const [respuestaMensaje, setRespuestaMensaje] = useState("");
+  console.log(categoria);
 
   // ClassicEditor
   // .create( document.querySelector( '#editor' ) )
@@ -28,14 +29,13 @@ const CreateArticle = (nochangeEditor) => {
       event.preventDefault();
       setLoading(true);
       const payload = new FormData();
-        payload.append("imagen", imagenPortada);
-        payload.append("titulo", titulo);
-        payload.append("subtitulo", subtitulo);
-        payload.append("categoria", categoria);
-        payload.append("contenido", contenido);
-        payload.append("autor", autor);
-      
-      
+      payload.append("imagen", imagenPortada);
+      payload.append("titulo", titulo);
+      payload.append("subtitulo", subtitulo);
+      payload.append("categoria", categoria);
+      payload.append("contenido", contenido);
+      payload.append("autor", autor);
+
       const respuesta = await axios.post(
         "http://localhost:3000/blog/",
         payload
@@ -67,26 +67,28 @@ const CreateArticle = (nochangeEditor) => {
     setContenido("");
   };
 
-  const imagenUrl = imagenPortada && URL.createObjectURL(imagenPortada)
+  const imagenUrl = imagenPortada && URL.createObjectURL(imagenPortada);
   return (
     <>
-    <div><NavBar /></div>
-      
+      <div>
+        <NavBar />
+      </div>
+
       <div className="body-form-article">
         <Form className="form-createArticle" onSubmit={handleSubmit}>
           <h3>Nuevo Post</h3>
           <div className="container-image">
-        <Form.Label>Imagen de Portada</Form.Label>
-          {imagenPortada &&  <img src={imagenUrl} style={{width:200}} />}
+            <Form.Label>Imagen de Portada</Form.Label>
+            {imagenPortada && <img src={imagenUrl} style={{ width: 200 }} />}
             <input
               type="file"
               onChange={handlePicture}
               className="form-control"
               id="image"
               required
-              style={{border: "none"}}
+              style={{ border: "none" }}
             />
-            </div>
+          </div>
           <Form.Group>
             <Form.Label>Titulo</Form.Label>
             <Form.Control
@@ -120,12 +122,13 @@ const CreateArticle = (nochangeEditor) => {
               id="categoria"
               aria-describedby="ingrese categoria"
               required
+              value={categoria}
             >
-              <option value={categoria}>1</option>
-              <option value={categoria}>2</option>
-              <option value={categoria}>3</option>
-              <option value={categoria}>4</option>
-              <option value={categoria}>5</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </Form.Control>
           </Form.Group>
           <Form.Group>
@@ -158,15 +161,15 @@ const CreateArticle = (nochangeEditor) => {
             <span>Cargando...</span>
           ) : (
             <>
-            <Button
-              variant="primary"
-              type="submit"
-              id="submit"
-              onClick={handleSubmit}
-            >
-              Postear
-            </Button>
-            <Link to="/blog">Cancelar</Link>
+              <Button
+                variant="primary"
+                type="submit"
+                id="submit"
+                onClick={handleSubmit}
+              >
+                Postear
+              </Button>
+              <Link to="/blog">Cancelar</Link>
             </>
           )}
           <p>{respuestaMensaje}</p>
@@ -178,4 +181,3 @@ const CreateArticle = (nochangeEditor) => {
 };
 
 export default CreateArticle;
-

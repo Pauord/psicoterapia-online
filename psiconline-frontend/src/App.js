@@ -11,54 +11,51 @@ import Eventos from "./pages/eventos/Eventos";
 import CreateArticle from "./pages/createArticle/CreateArticle";
 import EditArticle from "./pages/EditArticle/EditArticle";
 import SignUp from "./pages/signUp/SignUp";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Adm from "./pages/adm/Adm";
+import BlogArticle from "./pages/blogArticle/BlogArticle";
 
 function App() {
-
   return (
     <>
-      
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/blog">
-            <Blog />
-          </Route>
-          <Route path="/turnos">
-            <Turnos />
-          </Route>
-          <Route path="/talleres">
-            <Talleres />
-          </Route>
-          <Route path="/eventos">
-            <Eventos />
-            </Route>
-          <Route path="/signIn">
-            <SignIn />
-            </Route>
-          <Route path="/signUp">
-            <SignUp />
-          </Route>
-          <Route path="/createArticle">
-            <CreateArticle/>
-          </Route>
-          <Route path="/edit/:idArticle">
-            <EditArticle/>
-          </Route>
-          <Route path="/adm">
-            <Adm/>
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/blog">
+          <Blog />
+        </Route>
+        <Route path="/blogArticle/:id">
+          <BlogArticle />
+        </Route>
+        <Route path="/turnos">
+          <Turnos />
+        </Route>
+        <Route path="/talleres">
+          <Talleres />
+        </Route>
+        <Route path="/eventos">
+          <Eventos />
+        </Route>
+        <Route path="/signIn">
+          <SignIn />
+        </Route>
+        <Route path="/signUp">
+          <SignUp />
+        </Route>
+        <Route path="/createArticle">
+          <CreateArticle />
+        </Route>
+        <Route path="/edit/:idArticle">
+          <EditArticle />
+        </Route>
+        <Route path="/adm">
+          <Adm />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </>
   );
 }

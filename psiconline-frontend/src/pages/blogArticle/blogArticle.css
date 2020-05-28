@@ -1,0 +1,28 @@
+.container-article {
+  background-color: white;
+}
+
+.body-article {
+  border: 1 solid rgba(128, 128, 128, 0.76);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  align-items: center;
+  margin: 50px 120px;
+  padding: 30px;
+  border: 1px solid #dee2e6;
+}
+.titulo {
+  background-color: blanchedalmond;
+  color: rgb(82, 80, 80);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-article {
+}
+
+.comments {
+}

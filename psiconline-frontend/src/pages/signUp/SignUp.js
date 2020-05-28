@@ -60,7 +60,7 @@ function SignUp() {
     <>
       <NavBar />
 
-      
+      <div className="body-signUp">
         <Form className="form" onSubmit={handleSubmit}>
           <h3>Registrate</h3>
 
@@ -169,6 +169,7 @@ function SignUp() {
           <p>{respuestaMensaje}</p>
           {respuestaMensaje && <Link to="/">Volver</Link>}
         </Form>
+        </div>
       
     </>
   );

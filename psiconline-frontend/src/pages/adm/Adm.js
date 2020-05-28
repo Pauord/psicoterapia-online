@@ -9,14 +9,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Adm = () => {
-  const { idUser } = useParams();
+  const { id } = useParams;
   const [isClicked, setIsClicked] = useState(false);
   const [users, setUsers] = useState([]);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [isInEditMode, setIsInEditMode] = useState(false);
-  const [value, setValue] = useState("");
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -34,28 +33,29 @@ const Adm = () => {
     setIsClicked(true);
   };
 
+  const handleEdit = async () => {
+    const response = await axios.get(`http://localhost:3000/users/${id}`);
+    const { nombre, apellido, email } = response.data.user;
+    const payload = {
+      nombre,
+      apellido,
+      email,
+    };
+    try {
+      const respuesta = await axios.put(
+        `http://localhost:3000/users/${id}`,
+        payload
+      );
+      setNombre(nombre);
+      setApellido(apellido);
+      setEmail(email);
 
-  // const handleEdit = async (id) => {
-  //   const response = await axios.get(`http://localhost:3000/users/${idUser}`);
-  //   const {nombre, apellido, email} = response.data.user;
-  //   const payload = {
-  //     nombre,
-  //     apellido,
-  //     email,
-  //   };
-  //  try {
-  //     const respuesta = await axios.put(
-  //       `http://localhost:3000/users/${id}`,
-  //       payload
-  //     );
-  //     setNombre(nombre);
-  //     setApellido(apellido);
-  //     setEmail(email);
-  //     console.log(respuesta.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+      setIsInEditMode(false);
+      console.log(respuesta.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleDelete = async (id) => {
     try {
@@ -66,9 +66,12 @@ const Adm = () => {
       console.log(error);
     }
   };
+  const handleIsInEditMode = () => {
+    setIsInEditMode(true);
+  };
 
   return (
-    <div>
+    <div className="body-adm">
       <NavBar />
       <Nav.Link>
         <Link to="/createArticle" className="link">
@@ -77,42 +80,84 @@ const Adm = () => {
       </Nav.Link>
 
       {isClicked ? (
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>apellido</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-
-          {users.map((user) => (
-            <tbody>
+        isInEditMode ? (
+          <Table striped bordered hover>
+            <thead>
               <tr>
-                <td>{user.nombre}</td>
-                <td>{user.apellido}</td>
-                <td>{user.email}</td>
-                <td>
-                  {" "}
-                  <FontAwesomeIcon 
-                  icon={faEdit} 
-                  className="icon-edit"
-                  // onClick={()=> handleEdit(user._id)}
-                  style={{ cursor: "pointer", margin: 5, color: "grey" }}
-                   />
-                  <FontAwesomeIcon
-                    icon={faTrashAlt}
-                    className="icon-edit"
-                    onClick={() => handleDelete(user._id)}
-                    style={{ cursor: "pointer", margin: 5, color: "grey" }}
-                  />
-                </td>
+                <th>Nombre</th>
+                <th>apellido</th>
+                <th>Email</th>
               </tr>
-            </tbody>
-          ))}
-        </Table>
+            </thead>
+
+            {users.map((user) => (
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      value={user.nombre}
+                      onChange={(e) => setNombre(e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      value={user.apellido}
+                      onChange={(e) => setApellido(e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      value={user.email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <button className="btn btn-info" onClick={handleEdit}>
+                    Actualizar
+                  </button>
+                </tr>
+              </tbody>
+            ))}
+          </Table>
+        ) : (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>apellido</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+
+            {users.map((user) => (
+              <tbody>
+                <tr>
+                  <td>{user.nombre}</td>
+                  <td>{user.apellido}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    {" "}
+                    <FontAwesomeIcon
+                      icon={faEdit}
+                      className="icon-edit"
+                      onClick={handleIsInEditMode}
+                      style={{ cursor: "pointer", margin: 5, color: "grey" }}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      className="icon-edit"
+                      onClick={() => handleDelete(user._id)}
+                      style={{ cursor: "pointer", margin: 5, color: "grey" }}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </Table>
+        )
       ) : (
-        <Button onClick={() => handleClick()}>Administrar usuarios</Button>
+        <Button onClick={() => handleClick()}>Usuarios</Button>
       )}
     </div>
   );

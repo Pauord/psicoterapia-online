@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import corazonFull from "../../img/corazonRojo.svg";
 import corazonEmpty from "../../img/corazonVacio.svg";
+import Footer from "../../components/footer/Footer";
 
 const Blog = () => {
   const { idArticle } = useParams();
@@ -24,7 +25,13 @@ const Blog = () => {
       try {
         setLoading(true);
         const response = await axios.get("http://localhost:3000/blog/");
-        setArticles(response.data.respuesta);
+        const articulos = response.data.respuesta.map((articulo) => {
+          return {
+            ...articulo,
+            isLiked: false,
+          };
+        });
+        setArticles(articulos);
       } catch (error) {
         console.log(error);
       } finally {
@@ -33,6 +40,12 @@ const Blog = () => {
     };
     fetchArticle();
   }, []);
+
+  const linkArticle = (id) => {
+    console.log(id);
+
+    history.push(`/blogArticle/${id}`);
+  };
 
   const handleEdit = (id) => {
     history.push(`/edit/${id}`);
@@ -53,12 +66,12 @@ const Blog = () => {
   };
   const handleClick = async (id) => {
     try {
-      const increaseLike = () => setCounter(counter + 1);
-      const decreaseLike = () => setCounter(counter);
-      setClick(!isClick);
-      {
-        isClick ? decreaseLike() : increaseLike();
-      }
+      const copiaArticles = articles.map((article) => ({ ...article }));
+      const article = copiaArticles.find((article) => article._id === id);
+      article.isLiked = !article.isLiked;
+      article.counter++;
+      setArticles(copiaArticles);
+      axios.put(`http://localhost:3000/blog/like/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -71,56 +84,91 @@ const Blog = () => {
         <span>Cargando....</span>
       ) : (
         <ul className="container">
-          <div className="card-group w-1000 justify-content-center">
+          <div className="card-group w-1000 justify-content-center col-lg-12">
             {articles.map((article) => (
               <li key={article._id}>
-                <Card className="card">
+                <Card className="card ">
                   <Card.Img
                     variant="top"
                     src={article.imagen}
-                    style={{ maxWidth: 400 }}
+                    style={{ maxWidth: 400, cursor: "pointer" }}
+                    onClick={() => {
+                      linkArticle(article._id);
+                    }}
                   />
                   <hr></hr>
-                  <Card.Body>
-                    <Card.Title>{article.titulo}</Card.Title>
+                  <small className="text-muted">Last updated 3 mins ago</small>
+                  <Card.Body style={{ textAlign: "justify" }}>
+                    <Card.Title
+                      onClick={() => {
+                        linkArticle(article._id);
+                      }}
+                    >
+                      {article.titulo}
+                    </Card.Title>
                     <p>{article.categoria}</p>
-                    <Card.Text>{article.contenido}...</Card.Text>
-
+                    <div className="container-content mb-5">
+                      <Card.Text>{article.contenido}</Card.Text>
+                    </div>
                     <Link to="/">Leer más....</Link>
                     <br></br>
-                    <FontAwesomeIcon
-                      icon={faEdit}
-                      className="icon-edit"
-                      onClick={() => handleEdit(article._id)}
-                      style={{ cursor: "pointer", margin: 5, color: "grey" }}
-                    />
 
-                    <FontAwesomeIcon
-                      icon={faTrashAlt}
-                      className="icon-edit"
-                      onClick={() => handleDelete(article._id)}
-                      style={{ cursor: "pointer", margin: 5, color: "grey" }}
-                    />
+                    <hr></hr>
+                    <div className="d-flex flex-row justify-content-around">
+                      <FontAwesomeIcon
+                        icon={faEdit}
+                        className="icon-edit"
+                        onClick={() => handleEdit(article._id)}
+                        style={{
+                          cursor: "pointer",
+                          margin: 5,
+                          color: "grey",
+                        }}
+                      />
 
-                    {isClick ? (
-                      <div>
-                        <img
-                          src={corazonFull}
-                          style={{ width: 20, marginTop: -7, marginLeft: 20 }}
-                          onClick={() => handleClick(article._id)}
-                        />
-                        <p>{counter}</p>
-                      </div>
-                    ) : (
-                      <div>
-                        <img
-                          src={corazonEmpty}
-                          style={{ width: 20, marginTop: -7, marginLeft: 20 }}
-                          onClick={() => handleClick(article._id)}
-                        />
-                        <p>{counter}</p>
-                      </div>
-                    )}
+                      <FontAwesomeIcon
+                        icon={faTrashAlt}
+                        className="icon-edit"
+                        onClick={() => handleDelete(article._id)}
+                        style={{
+                          cursor: "pointer",
+                          margin: 5,
+                          color: "grey",
+                        }}
+                      />
+                    </div>
+
+                    <div className="row d-flex justify-content-end align-items-center">
+                      {article.isLiked ? (
+                        <div className="d-flex align-items-center ">
+                          <img
+                            src={corazonFull}
+                            style={{
+                              width: 20,
+                              marginTop: -13,
+                              marginLeft: 20,
+                              marginRight: 7,
+                            }}
+                            onClick={() => handleClick(article._id)}
+                          />
+                          <p>{article.counter}</p>
+                        </div>
+                      ) : (
+                        <div className="d-flex align-items-center ">
+                          <img
+                            src={corazonEmpty}
+                            style={{
+                              width: 20,
+                              marginTop: -13,
+                              marginLeft: 20,
+                              marginRight: 7,
+                            }}
+                            onClick={() => handleClick(article._id)}
+                          />
+                          <p>{article.counter}</p>
+                        </div>
+                      )}
+                    </div>
                   </Card.Body>
                 </Card>
               </li>
@@ -128,6 +176,16 @@ const Blog = () => {
           </div>
         </ul>
       )}
+      <div>
+        <ul>
+          <li></li>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li></li>
+        </ul>
+      </div>
+      <Footer />
     </>
   );
 };

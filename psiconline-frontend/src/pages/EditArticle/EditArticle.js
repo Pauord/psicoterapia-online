@@ -26,14 +26,16 @@ const EditArticle = (handleEdit) => {
           `http://localhost:3000/blog/${idArticle}`
         );
         const {
-          imagenPortada,
+          imagen,
           titulo,
           subtitulo,
           categoria,
           contenido,
           autor,
         } = response.data.respuesta;
-        setImagenPortada(imagenPortada);
+        console.log(imagen);
+
+        setImagenPortada(imagen);
         setTitulo(titulo);
         setSubtitulo(subtitulo);
         setCategoria(categoria);
@@ -53,15 +55,6 @@ const EditArticle = (handleEdit) => {
       event.preventDefault();
       setLoading(true);
 
-      // const payload = {
-      //   imagenPortada,
-      //   titulo,
-      //   subtitulo,
-      //   categoria,
-      //   contenido,
-      //   autor,
-      // };
-
       const payload = new FormData();
       payload.append("imagen", imagenPortada);
       payload.append("titulo", titulo);
@@ -69,7 +62,6 @@ const EditArticle = (handleEdit) => {
       payload.append("categoria", categoria);
       payload.append("contenido", contenido);
       payload.append("autor", autor);
-    
 
       const respuesta = await axios.put(
         `http://localhost:3000/blog/${idArticle}`,
@@ -101,13 +93,19 @@ const EditArticle = (handleEdit) => {
     setAutor("");
   };
 
-  const imagenUrl = imagenPortada && URL.createObjectURL(imagenPortada);
+  const imagenUrl =
+    imagenPortada &&
+    (typeof imagenPortada === "string"
+      ? imagenPortada
+      : URL.createObjectURL(imagenPortada));
+  console.log(imagenUrl);
+
   return (
     <>
       <NavBar />
       <div className="body-form-article">
         <Form className="form-createArticle" onSubmit={handleSubmit}>
-          <h3>EditarPost</h3>
+          <h3>Editar Post</h3>
           <div className="container-image">
             <Form.Label>Imagen de Portada</Form.Label>
             {imagenPortada && <img src={imagenUrl} style={{ width: 200 }} />}
@@ -152,13 +150,14 @@ const EditArticle = (handleEdit) => {
               className="form-control"
               id="categoria"
               aria-describedby="ingrese categoria"
+              value={categoria}
               required
             >
-              <option value={categoria}>1</option>
-              <option value={categoria}>2</option>
-              <option value={categoria}>3</option>
-              <option value={categoria}>4</option>
-              <option value={categoria}>5</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
             </Form.Control>
           </Form.Group>
           <Form.Group>

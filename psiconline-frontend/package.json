@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "mdbootstrap": "^4.19.0",
     "onsenui": "^2.10.10",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^3.1.0",
@@ -20,6 +21,7 @@
     "react-animated-heart": "0.0.4",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
+    "react-parallax": "^3.0.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },
