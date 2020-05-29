@@ -153,11 +153,10 @@ const EditArticle = (handleEdit) => {
               value={categoria}
               required
             >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+             
+             <option value="viajes">Viajes</option>
+              <option value="psicología">Psicología</option>
+              <option value="bienestar">Bienestar</option>
             </Form.Control>
           </Form.Group>
           <Form.Group>

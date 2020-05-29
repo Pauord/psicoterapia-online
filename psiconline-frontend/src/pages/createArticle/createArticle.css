@@ -12,18 +12,7 @@
     transform: translate(-50%, -50%);
     background-color: white;
   }
-  @media (max-width: 400px) {
-    .form-createArticle {
-      width: 90%;
-    }
-  }
 
-
-@media (max-width: 400px) {
-  .form {
-    width: 90%;
-  }
-}
 
 .container-image {
   display: flex;

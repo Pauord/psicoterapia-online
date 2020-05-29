@@ -18,7 +18,6 @@ const Blog = () => {
   const [articles, setArticles] = useState([]);
   const [respuestaMensaje, setRespuestaMensaje] = useState("");
   let [counter, setCounter] = useState(0);
-  const [isClick, setClick] = useState(false);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -79,25 +78,35 @@ const Blog = () => {
   return (
     <>
       <NavBar />
-
+      <div className="titulo mt-5">
+        <h1>BLOG</h1>
+      </div>
+     <div className="container">
+     
       {loading ? (
         <span>Cargando....</span>
       ) : (
-        <ul className="container">
+        <ul className="row">
           <div className="card-group w-1000 justify-content-center col-lg-12">
             {articles.map((article) => (
               <li key={article._id}>
-                <Card className="card ">
+                <Card className="card h-600">
                   <Card.Img
+                    className="img-fluid"
                     variant="top"
                     src={article.imagen}
-                    style={{ maxWidth: 400, cursor: "pointer" }}
+                    style={{
+                      width: 400,
+                      height: 250,
+                      cursor: "pointer",
+                      objectFit: "cover",
+                    }}
                     onClick={() => {
                       linkArticle(article._id);
                     }}
                   />
                   <hr></hr>
-                  <small className="text-muted">Last updated 3 mins ago</small>
+                  <small className="text-muted">{article._createdAt}</small>
                   <Card.Body style={{ textAlign: "justify" }}>
                     <Card.Title
                       onClick={() => {
@@ -176,15 +185,50 @@ const Blog = () => {
           </div>
         </ul>
       )}
-      <div>
-        <ul>
-          <li></li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li></li>
-        </ul>
+    
+
+     </div>
+     <hr></hr>
+      <div className="row">
+        <div className="container">
+          {/* <!-- Social buttons --> */}
+          <ul className="list-unstyled list-inline text-center flex-row justify-content-around ">
+            <li className="list-inline-item">
+              <a
+                href="https://facebook.com"
+                className="btn-floating btn-fb mx-1"
+              >
+                <i className="fab fa-facebook-f" style={{ color:"sandybrown"}}> </i>
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a
+                href="https://twitter.com"
+                className="btn-floating btn-tw mx-1"
+              >
+                <i className="fab fa-twitter" style={{ color:"sandybrown"}}> </i>
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a
+                href="https://google.com"
+                className="btn-floating btn-gplus mx-1"
+              >
+                <i className="fab fa-google-plus-g" style={{ color:"sandybrown"}}> </i>
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a
+                href="https://likedin.com"
+                className="btn-floating btn-li mx-1"
+              >
+                <i className="fab fa-linkedin-in" style={{ color:"sandybrown"}}> </i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
+      <hr></hr>
       <Footer />
     </>
   );

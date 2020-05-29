@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../navBar/navBar.css";
 import { Navbar, Form, Button, Nav, NavDropdown } from "react-bootstrap";
+import logo from "../../img/charla.svg";
 
 function NavBar() {
   // const history = useHistory();
@@ -13,12 +14,22 @@ function NavBar() {
 
   return (
     <>
-      <nav className="mb-1 navbar navbar-expand-lg navbar-light sticky-top default-color">
-        <a className="navbar-brand" href="#">
-          PSICONLINE
-        </a>
+      <nav
+        className="mb-1 navbar navbar-expand-lg fixed-top "
+        style={{
+          color: "swhitesmoke",
+          backgroundColor: "#73b5af",
+          fontFamily: "Montserrat",
+        }}
+      >
+        <Link to="/" className="navbar-brand">
+          <img src={logo} style={{ width: 40, marginRight: 5 }} />
+          PSICONLINE{" "}
+        </Link>
+
         <button
           className="navbar-toggler"
+          style={{ color: "whitesmoke" }}
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent-333"
@@ -26,14 +37,14 @@ function NavBar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon color-smoke"></span>
         </button>
         <div
-          className="collapse navbar-collapse"
+          className="collapse navbar-collapse color-smoke d-flex justify-content-between"
           id="navbarSupportedContent-333"
         >
           <div className="contenedor-nav d-flex justify-content-center align-items-center">
-            <ul className="navbar-nav mr-auto align-items-center">
+            <ul className="navbar-nav align-items-end contenedor-redes">
               <li className="nav-item active">
                 <Link to="/" className="nav-link">
                   Home
@@ -52,7 +63,7 @@ function NavBar() {
               </li>
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle color-smoke"
                   id="navbarDropdownMenuLink-333"
                   data-toggle="dropdown"
                   aria-haspopup="true"
@@ -77,7 +88,7 @@ function NavBar() {
               </li>
             </ul>
           </div>
-          <ul className="navbar-nav ml-auto nav-flex-icons">
+          <ul className="navbar-nav d-flex justify-content-center align-items-center nav-flex-icons">
             <li className="nav-item">
               <a className="nav-link waves-effect waves-light">
                 <i className="fab fa-twitter"></i>
@@ -104,12 +115,12 @@ function NavBar() {
               >
                 <ul>
                   <li className="nav-item">
-                    <Link to="/signIn" className="nav-link">
+                    <Link to="/signIn" className="nav-link text-dark">
                       Ingresar
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link to="/adm" className="nav-link">
+                  <li className="nav-item ">
+                    <Link to="/adm" className="nav-link text-dark">
                       Administrar
                     </Link>
                   </li>
@@ -119,83 +130,7 @@ function NavBar() {
           </ul>
         </div>
       </nav>
-
-      {/* <Navbar
-        collapseOnSelect
-        expand="lg"
-        className="navbar fixed-top align-items-center"
-        id="menu"
-      >
-        <div className="logo">
-          <Navbar.Brand>
-            <Link to="/">
-              <img
-                src={logo}
-                style={{ width: 90, marginTop: -7, marginLeft: 20 }}
-              />
-            </Link>
-          </Navbar.Brand>
-        </div>
-        <div className="barra-menu">
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toggle" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav>
-            <Nav.Link>
-                <Link to="/" className="link">
-                 Home
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/about" className="link">
-                  Sobre mí
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/blog" className="link">
-                  Blog
-                </Link>
-              </Nav.Link>
-              <NavDropdown
-                title="Trabajemos juntxs"
-                id="collasible-nav-dropdown"
-                className="link-dropdown"
-              >
-                <NavDropdown.Item>
-                  <Link to="/turnos" className="link-down">
-                    Terapia online
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/talleres" className="link-down">
-                    Talleres
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/eventos" className="link-down">
-                    Eventos
-                  </Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link>
-                <Link to="/signIn" className="link">
-                  Ingresá
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/signUp" className="link">
-                  Registrate
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/adm" className="link">
-                  Administrar
-                </Link>
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </div>
-      </Navbar>
-      <div className="espacio" style={{ height: 90 }}></div> */}
+      <div style={{ height: 56 }}></div>
     </>
   );
 }

@@ -124,11 +124,9 @@ const CreateArticle = (nochangeEditor) => {
               required
               value={categoria}
             >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
+              <option value="viajes">Viajes</option>
+              <option value="psicología">Psicología</option>
+              <option value="bienestar">Bienestar</option>
             </Form.Control>
           </Form.Group>
           <Form.Group>

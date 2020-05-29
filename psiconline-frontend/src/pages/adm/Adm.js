@@ -73,11 +73,11 @@ const Adm = () => {
   return (
     <div className="body-adm">
       <NavBar />
-      <Nav.Link>
-        <Link to="/createArticle" className="link">
-          Crear Articulo{" "}
+     
+      <Link to="/createArticle" className="link btn btn-outline-info">
+         Nuevo Post{" "}
         </Link>
-      </Nav.Link>
+      
 
       {isClicked ? (
         isInEditMode ? (
@@ -157,7 +157,7 @@ const Adm = () => {
           </Table>
         )
       ) : (
-        <Button onClick={() => handleClick()}>Usuarios</Button>
+        <Button  onClick={() => handleClick()}>Usuarios registrados</Button>
       )}
     </div>
   );

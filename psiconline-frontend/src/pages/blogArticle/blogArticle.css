@@ -14,9 +14,10 @@
   border: 1px solid #dee2e6;
 }
 .titulo {
-  background-color: blanchedalmond;
+  border-top: 2px solid sandybrown;
+  border-bottom: 2px solid sandybrown;
   color: rgb(82, 80, 80);
-  height: 100px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;

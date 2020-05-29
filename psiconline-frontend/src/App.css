@@ -2,11 +2,12 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; /** Reset para REMS - 62.5% = 10px de 16px **/
 }
-*,
-*:before,
-*:after {
+* {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
+
 body {
   font-family: "Lato", sans-serif;
   font-size: 1.6rem;
@@ -15,10 +16,7 @@ body {
 
 /** Globales **/
 
-.contenedor {
-  width: 100%;
-  margin: 0 auto;
-}
+
 h1 {
   font-size: 3.8rem;
 }
@@ -55,4 +53,17 @@ h4 {
 
 .boton:hover {
   cursor: pointer;
+}
+
+.form-control {
+  font-size: 1.7rem;
+}
+
+div.row {
+margin-right: 0;
+padding-right: 0;
+}
+div.container-fluid {
+  padding-right: 0;
+  margin-right: 0;
 }

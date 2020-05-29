@@ -1,6 +1,3 @@
-nav {
-
-}
 
 .navbar-brand {
   display: inline-block;
@@ -11,8 +8,31 @@ nav {
   font-size: 2rem;
   line-height: inherit;
   white-space: nowrap;
+  color: whitesmoke;
 }
 
 .nav-link {
   color: whitesmoke;
+  margin: 0 10px;
 }
+
+.color-smoke {
+  color: whitesmoke;
+}
+
+  @media (min-width: 768px) {
+    .contenedor-redes 
+    {
+     text-align: center ;
+    }
+  
+}
+
+@media (max-width: 768px) {
+  .contenedor-redes 
+  {
+   text-align: end ;
+  }
+
+}
+

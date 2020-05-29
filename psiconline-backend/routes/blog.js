@@ -3,6 +3,9 @@ const router = express.Router();
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
+//moment
+var moment = require("moment");
+var date = moment().startOf("hour").fromNow();
 const multer = require("multer");
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -25,19 +28,23 @@ var blogArticleSchema = new Schema(
     categoria: { type: String, require: true },
     contenido: { type: String, require: true },
     autor: { type: String, required: true, trim: true },
-    createdAt: { type: Date },
     views: { type: Number },
     counter: { type: Number },
+    comentario: { type: String },
+    _createdAt: { type: Date, date },
+    nombreComentario: { type: String },
   },
   { timestamps: true }
 );
+console.log(date);
 
 const ArticleModel = mongoose.model("blogArticles", blogArticleSchema); //'blogarticles' es el nombre de la coleccion que guarda los documentos creados
 
 const getArticles = async (req, res) => {
+  //al no pasarle parametros al find, me devuelve todo lo que esta despues de la "/"
   //devuelve listado completo
   try {
-    const respuesta = await ArticleModel.find().sort({ createdAt: "desc" }); //al no pasarle parametros al find, me devuelve todo lo que esta despues de la "/"
+    const respuesta = await ArticleModel.find().sort({ createdAt: "desc" });
     res.json({
       mensaje: "listado de articulos: ",
       respuesta,
@@ -86,7 +93,6 @@ const postArticle = async (req, res) => {
     contenido: req.body.contenido,
     autor: req.body.autor,
     counter: 0,
-    views: req.body.views,
   });
   try {
     const respuesta = await newArticle.save();
@@ -110,6 +116,7 @@ const putArticle = async (req, res) => {
     const urlImagen = "http://localhost:3000/imagenes/" + req.file.filename;
     modifiedArticle = req.body;
     modifiedArticle["imagen"] = urlImagen;
+    _createdAt = formatted_date;
     const respuesta = await ArticleModel.findByIdAndUpdate(id, modifiedArticle);
     res.json({
       mensaje: "Articulo modificado con exito: ",

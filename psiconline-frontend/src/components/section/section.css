@@ -1,31 +1,35 @@
 .seccion {
   margin: 2rem;
 }
+
 @media (min-width: 768px) {
   .iconos-nosotros {
     display: flex;
     justify-content: space-between;
   }
 }
+
 .icono {
   text-align: center;
 }
+
 .icono img {
   width: 50px;
   margin-bottom: 15px;
 }
+
 @media (min-width: 768px) {
   .icono {
     flex-basis: calc(33.3% - 1rem);
   }
 }
+
 .icono h3 {
   text-transform: uppercase;
 }
 
-/** Contacto Home **/
 .imagen-blog {
-  background-image: url("../../img/escritorio.jpg");
+  background-image: url("../../img/blog.jpg");
   background-position: center center;
   background-size: cover;
   height: 40rem;
@@ -34,18 +38,31 @@
   object-fit: cover;
 }
 .contenido {
-  flex: 0 0 95%;
+ 
   color: #ffffff;
   display: flex;
-    flex-direction: column;
-    flex-flow: column;
-    color: rgb(82, 80, 80);
+  flex-direction: column;
+  flex-flow: column;
+  color: rgb(82, 80, 80);
 }
 .contenido p {
   font-size: 1.8rem;
 }
 
 .centro-blog {
-  background-color: black;
-  color: azure;
+  color: rgb(240, 255, 255);
+  padding: 60px;
 }
+.formulario-contacto {
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-sandy {
+  background-color: sandybrown;
+  border: sandybrown;
+}
+.btn-outline-sandy {
+  color: sandybrown;
+  border: sandybrown;
+}
+

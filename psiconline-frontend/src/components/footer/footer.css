@@ -1,13 +1,18 @@
 
 .footer-container {
     display: block;
-    background-color: blanchedalmond;
-    margin-top: 150px;
+    background-color: whitesmoke;
+    padding-top: 30px;
     width: 100vw;
     color: rgb(82, 80, 80);
+    margin-top: 30px;
     
 }
 .footer-container .nav-link {
 color: rgb(82, 80, 80);
 
+}
+
+ul li a {
+    color: rgb(82, 80, 80);
 }
